@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.mlkit.nl.languageid.LanguageIdentifier;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class SetPageActivity extends AppCompatActivity {
 
@@ -48,7 +49,6 @@ public class SetPageActivity extends AppCompatActivity {
 //        dbHandler = new DBHandler(this);
 
         currentSet = (Set) getIntent().getSerializableExtra("CARDSET");
-//        Log.d("SET", "Retrieve currentSet: " + currentSet.getCount());
         cardEntries = currentSet.getCards();
 
         header = findViewById(R.id.SetPageHeader);
@@ -57,14 +57,14 @@ public class SetPageActivity extends AppCompatActivity {
         cardCount = findViewById(R.id.setCardCount);
         cardCount.setText(currentSet.getCount() + " cards");
 
-//        textToSpeech = new TextToSpeech(this,  new TextToSpeech.OnInitListener() {
-//            @Override
-//            public void onInit(int status) {
-//                if(status != TextToSpeech.ERROR) {
-//                    textToSpeech.setLanguage(Locale.JAPANESE);
-//                }
-//            }
-//        });
+        textToSpeech = new TextToSpeech(this,  new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if(status != TextToSpeech.ERROR) {
+                    textToSpeech.setLanguage(Locale.JAPANESE);
+                }
+            }
+        });
 
         //setting play btn onClick
         ImageButton playBtn = findViewById(R.id.setPlayButton);
@@ -197,8 +197,10 @@ public class SetPageActivity extends AppCompatActivity {
     //flashCardBtn onClick method
     private void flashCardBtnClick(){
         //sends to flashcard activity
-//        Intent flashCardIntent = new Intent(this, FlashCardActivity.class);
-//        this.startActivityForResult(flashCardIntent, LAUNCH_FLASHCARD_ACTIVITY);
+        Intent flashCardIntent = new Intent(this, FlashCardActivity.class);
+        flashCardIntent.putExtra("setCARDS", cardEntries);
+        flashCardIntent.putExtra("setName", currentSet.getName());
+        this.startActivity(flashCardIntent);
     }
 
     private void backButtonClick(){

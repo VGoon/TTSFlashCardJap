@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/CardText"
+            android:id="@+id/FlashCardText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -33,18 +33,18 @@
         android:id="@+id/ButtonLayout"
         android:layout_width="0dp"
         android:layout_height="113dp"
-        android:layout_marginStart="110dp"
-        android:layout_marginLeft="110dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="110dp"
-        android:layout_marginRight="110dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CardLayout">
 
         <ImageButton
-            android:id="@+id/MuteButton"
+            android:id="@+id/FlashMuteButton"
             android:layout_width="80dp"
             android:layout_height="80dp"
             app:srcCompat="@android:drawable/ic_lock_silent_mode" />
@@ -54,11 +54,22 @@
             android:layout_height="wrap_content" />
 
         <ImageButton
-            android:id="@+id/PlayButton"
+            android:id="@+id/FlashNextButton"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_weight="1"
             app:srcCompat="@android:drawable/ic_media_play" />
+
+        <Space
+            android:layout_width="30dp"
+            android:layout_height="wrap_content" />
+
+        <ImageButton
+            android:id="@+id/FlashPlayBtn"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:srcCompat="@android:drawable/ic_media_play"
+            tools:srcCompat="@android:drawable/ic_menu_slideshow" />
     </TableRow>
 
     <TextView
