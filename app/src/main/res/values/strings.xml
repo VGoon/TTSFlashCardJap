@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">FlashCardAudioTracks</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="sets">Sets</string>
+    <string name="edit">Edit</string>
+    <string name="title">Title</string>
+    <string name="setPageTitle">DuolingoSets</string>
+    <string name="setPageTermsCount">5 terms</string>
+    <string name="setCardTitle">Cards</string>
+    <string name="cardAmountStatic"></string>
+</resources>
