@@ -2,8 +2,10 @@ package com.example.flashcardaudiotracks;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.speech.tts.TextToSpeech;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -144,30 +146,25 @@ public class FlashCardActivity extends AppCompatActivity {
 
     private void onClickPlay(){
         mute = false;
-        onClickCard();
-//        h.postDelayed(new Runnable() {
-//            public void run() {
-//                //put your code here
-//                onClickCard();
-//            }
-//
-//        }, 5000);
 
-        h.postDelayed(new Runnable() {
-            public void run() {
-                //put your code here
-                onClickNext();
+        new CountDownTimer(30000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                //mTextField.setText("seconds remaining: " + millisUntilFinished / 1000);
+                onClickCard();
             }
 
-        }, 5000);
-
-        h.postDelayed(new Runnable() {
-            public void run() {
-                //put your code here
-                onClickPlay();
+            public void onFinish() {
+                //mTextField.setText("done!");
+                Log.d("TAG","DONE");
+//                changeNumberLeftOver();
+//                term = cards.get(cardNumber-1).getTerm();
+//                def = cards.get(cardNumber-1).getDef();
+//                flashCardText.setText(term);
             }
+        }.start();
 
-        }, 5000);
+        onClickPlay();
     }
 
     private void playCardSound(String str){
