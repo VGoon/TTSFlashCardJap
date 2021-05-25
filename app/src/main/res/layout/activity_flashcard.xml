@@ -13,12 +13,12 @@
         android:layout_height="402dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/leftOverText">
 
         <TextView
             android:id="@+id/FlashCardText"
@@ -35,7 +35,7 @@
         android:layout_height="113dp"
         android:layout_marginStart="60dp"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="60dp"
         android:layout_marginRight="60dp"
         android:gravity="center"
@@ -58,7 +58,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_weight="1"
-            app:srcCompat="@android:drawable/ic_media_play" />
+            app:srcCompat="@android:drawable/ic_media_next" />
 
         <Space
             android:layout_width="30dp"
@@ -76,7 +76,7 @@
         android:id="@+id/leftOverText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="40dp"
         android:text="TextView"
         android:textSize="30sp"

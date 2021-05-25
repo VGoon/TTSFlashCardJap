@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.speech.tts.TextToSpeech;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -93,17 +92,6 @@ public class FlashCardActivity extends AppCompatActivity {
         playBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                r.run();
-//                thread.start();
-//                playCardSound(term);
-//                h.postDelayed(new Runnable() {
-//                    public void run() {
-//                        //put your code here
-////                        playCardSound(term);
-//                        onClickPlay();
-//                    }
-//
-//                }, 5000);
                 onClickPlay();
             }
         });
@@ -144,27 +132,39 @@ public class FlashCardActivity extends AppCompatActivity {
         }
     }
 
+    private void playCurrent(){
+        String str = flashCardText.getText().toString();
+        if(str.equals(term)){
+            playCardSound(term);
+        }else{
+            playCardSound(def);
+        }
+    }
+
     private void onClickPlay(){
         mute = false;
 
-        new CountDownTimer(30000, 1000) {
+        new CountDownTimer(10000, 5000) {
 
             public void onTick(long millisUntilFinished) {
-                //mTextField.setText("seconds remaining: " + millisUntilFinished / 1000);
-                onClickCard();
+                if(millisUntilFinished < 5000){
+                    flashCardText.setText(def);
+                }
+                playCurrent();
             }
 
             public void onFinish() {
-                //mTextField.setText("done!");
-                Log.d("TAG","DONE");
-//                changeNumberLeftOver();
-//                term = cards.get(cardNumber-1).getTerm();
-//                def = cards.get(cardNumber-1).getDef();
-//                flashCardText.setText(term);
+//                Log.d("TAG","DONE");
+                if(cardNumber-1 == totalCards)
+                    onEndCards();
+
+                changeNumberLeftOver();
+                term = cards.get(cardNumber-1).getTerm();
+                def = cards.get(cardNumber-1).getDef();
+                flashCardText.setText(term);
+                onClickPlay();
             }
         }.start();
-
-        onClickPlay();
     }
 
     private void playCardSound(String str){
